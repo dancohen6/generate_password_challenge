@@ -7,12 +7,18 @@ var specialCharacters = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', 
 
 function getUserInput(){
     var amount = +prompt('Please provide an amount.');
+    // COMMENT
+    if (amount >=8 && amount <=128) {
     var includeLowercase = confirm('Click OK to include lowercase letters.')
     var includeUppercase = confirm('Click OK to include uppercase letters.')
     var includeNumbers = confirm('Click OK to include numbers.')
     var includeSpecial = confirm('Click OK to include special characters.')
 
     return [amount, includeLowercase, includeUppercase, includeNumbers, includeSpecial];
+    } else {
+        alert('Please re-enter a number that is between 8 and 128.');
+        getUserInput();
+    }
 }
 
 function generatePassword() {
@@ -59,10 +65,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
-
-// var combined = lowercase.concat(uppercase).concat(numbers).concat(specialCharacters);
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
